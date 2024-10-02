@@ -4,52 +4,59 @@
         <attribute name="name" value="T01-Data type, Input-Output"/>
         <attribute name="authors" value="boyha"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2024-10-02 04:54:38 PM"/>
+        <attribute name="saved" value="2024-10-02 04:41:00 PM"/>
         <attribute name="created" value="Ym95aGE7Qk9ZOzIwMjQtMDktMDY7MTA6MTE6MjAgQU07MjAyMg=="/>
-        <attribute name="edited" value="Ym95aGE7Qk9ZOzIwMjQtMDktMDY7MTE6MjQ6MTAgQU07NTsyMTM4"/>
-        <attribute name="edited" value="QVNVUztTVU5OWS1MQVBUT1A7MjAyNC0xMC0wMjswNDo1NDozOCBQTTsxNjsyNjc5"/>
+        <attribute name="edited" value="Ym95aGE7Qk9ZOzIwMjQtMTAtMDI7MDQ6NDE6MDAgUE07ODsyMTQ0"/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
         <body>
-            <declare name="Isbn, Judul, Penulis, Penerbit, Formatbuku, Kat, Tub, Diskon" type="String" array="False" size=""/>
-            <declare name="Stok, Tahunterbit" type="Integer" array="False" size=""/>
-            <declare name="Margin, Rating, Hargabeli, Katdiskon" type="Real" array="False" size=""/>
-            <do expression="Isbn!=&quot;---&quot;">
-                <input variable="Isbn"/>
-                <if expression="Isbn=&quot;---&quot;">
+            <declare name="ISBN, KET, KET2, KET3" type="String" array="False" size=""/>
+            <declare name="JUDUL" type="String" array="False" size=""/>
+            <declare name="PENULIS" type="String" array="False" size=""/>
+            <declare name="TAHUNTERBIT" type="Integer" array="False" size=""/>
+            <declare name="PENERBIT" type="String" array="False" size=""/>
+            <declare name="FORMATBUKU" type="String" array="False" size=""/>
+            <declare name="HARGABELI" type="Real" array="False" size=""/>
+            <declare name="MINIMUMMARGIN" type="Real" array="False" size=""/>
+            <declare name="STOK" type="Integer" array="False" size=""/>
+            <declare name="RATING" type="Real" array="False" size=""/>
+            <declare name="DISKON" type="Real" array="False" size=""/>
+            <do expression="ISBN !=&quot;---&quot;">
+                <input variable="ISBN"/>
+                <if expression="ISBN=&quot;---&quot;">
                     <then/>
                     <else>
-                        <input variable="Judul"/>
-                        <input variable="Penulis"/>
-                        <input variable="Tahunterbit"/>
-                        <input variable="Penerbit"/>
-                        <input variable="Formatbuku"/>
-                        <input variable="Hargabeli"/>
-                        <input variable="Margin"/>
-                        <input variable="Stok"/>
-                        <input variable="Rating"/>
-                        <if expression="Rating&gt;=4.7">
+                        <input variable="JUDUL"/>
+                        <input variable="PENULIS"/>
+                        <input variable="TAHUNTERBIT"/>
+                        <input variable="PENERBIT"/>
+                        <input variable="FORMATBUKU"/>
+                        <input variable="HARGABELI"/>
+                        <input variable="MINIMUMMARGIN"/>
+                        <input variable="STOK"/>
+                        <input variable="RATING"/>
+                        <if expression="RATING&gt;=4.7">
                             <then>
-                                <assign variable="Kat" expression="&quot;Best Pick&quot;"/>
+                                <assign variable="KET" expression="&quot;Best pick&quot;"/>
                             </then>
                             <else>
-                                <if expression="Rating&gt;=4.5">
+                                <if expression="RATING&gt;=4.5">
                                     <then>
-                                        <assign variable="Kat" expression="&quot;Must Read&quot;"/>
+                                        <assign variable="KET" expression="&quot;Must Pick&quot;"/>
                                     </then>
                                     <else>
-                                        <if expression="Rating&gt;=4.0">
+                                        <if expression="RATING&gt;=4.0">
                                             <then>
-                                                <assign variable="Kat" expression="&quot;Recommended&quot;"/>
+                                                <assign variable="KET" expression="&quot;Recommended&quot;"/>
                                             </then>
                                             <else>
-                                                <if expression="Rating&gt;=3.0">
+                                                <if expression="RATING&gt;=3.0">
                                                     <then>
-                                                        <assign variable="Kat" expression="&quot;Average&quot;"/>
+                                                        <assign variable="KET" expression="&quot;Average&quot;"/>
                                                     </then>
                                                     <else>
-                                                        <assign variable="Kat" expression="&quot;Low&quot;"/>
+                                                        <assign variable="KET" expression="&quot;Low&quot;"/>
                                                     </else>
                                                 </if>
                                             </else>
@@ -58,20 +65,21 @@
                                 </if>
                             </else>
                         </if>
-                        <assign variable="Katdiskon" expression="(margin/hargabeli)*(-1)"/>
-                        <if expression="Katdiskon&gt;=0.4">
+                        <assign variable="MINIMUMMARGIN" expression="MINIMUMMARGIN*(-1)"/>
+                        <assign variable="DISKON" expression="MINIMUMMARGIN/HARGABELI"/>
+                        <if expression="DISKON&gt;=40/100">
                             <then>
-                                <assign variable="Diskon" expression="&quot;Once in a lifetime&quot;"/>
+                                <assign variable="KET2" expression="&quot;Once in a livetime&quot;"/>
                             </then>
                             <else>
-                                <if expression="Katdiskon&gt;=0.2">
+                                <if expression="DISKON&gt;=20/100">
                                     <then>
-                                        <assign variable="Diskon" expression="&quot;Never come twice&quot;"/>
+                                        <assign variable="KET2" expression="&quot;Never come twice&quot;"/>
                                     </then>
                                     <else>
-                                        <if expression="Katdiskon&gt;0">
+                                        <if expression="DISKON&gt;0">
                                             <then>
-                                                <assign variable="Diskon" expression="&quot;No regret&quot;"/>
+                                                <assign variable="KET2" expression="&quot;No regret&quot;"/>
                                             </then>
                                             <else/>
                                         </if>
@@ -79,15 +87,15 @@
                                 </if>
                             </else>
                         </if>
-                        <if expression="kat=&quot;Best pick &quot; &amp;&amp; Diskon=&quot;once in lifetime&quot;">
+                        <if expression="RATING&gt;=4.7 &amp;&amp; DISKON&gt;=40/100">
                             <then>
-                                <assign variable="Tub" expression="&quot;The ultimate best&quot;"/>
+                                <assign variable="KET3" expression="&quot;The ultimate best&quot;"/>
                             </then>
                             <else>
-                                <assign variable="Tub" expression="&quot;---&quot;"/>
+                                <assign variable="KET3" expression="&quot;---&quot;"/>
                             </else>
                         </if>
-                        <output expression="ISBN&amp;&quot;|&quot;&amp;Judul&amp;&quot;|&quot;&amp;Penulis&amp;&quot;|&quot;&amp;Tahunterbit&amp;&quot;|&quot;&amp;Penerbit&amp;&quot;|&quot;&amp;Formatbuku&amp;&quot;|&quot;&amp;Hargabeli&amp;&quot;|&quot;&amp;Margin&amp;&quot;|&quot;&amp;Stok&amp;&quot;|&quot;&amp;Rating&amp;&quot;|&quot;&amp;Kat&amp;&quot;|&quot;&amp;Diskon&amp;&quot;|&quot;&amp;Tub" newline="True"/>
+                        <output expression="ISBN&amp;&quot;|&quot;&amp;JUDUL&amp;&quot;|&quot;&amp;PENULIS&amp;&quot;|&quot;&amp;TAHUNTERBIT&amp;&quot;|&quot;&amp;PENERBIT&amp;&quot;|&quot;&amp;FORMATBUKU&amp;&quot;|&quot;&amp;HARGABELI&amp;&quot;|&quot;&amp;MINIMUMMARGIN&amp;&quot;|&quot;&amp;STOK&amp;&quot;|&quot;&amp;RATING&amp;&quot;|&quot;&amp;KET&amp;&quot;|&quot;&amp;KET2&amp;&quot;|&quot;&amp;KET3" newline="True"/>
                     </else>
                 </if>
             </do>
