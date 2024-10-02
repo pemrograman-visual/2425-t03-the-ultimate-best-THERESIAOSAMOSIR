@@ -42,7 +42,7 @@ public class T03 {
                         }
                     }
                 }
-                katdiskon = margin / -hargabeli;
+                katdiskon = margin / hargabeli;
                 if (katdiskon >= 0.4) {
                     diskon = "Once in a lifetime";
                 } else {

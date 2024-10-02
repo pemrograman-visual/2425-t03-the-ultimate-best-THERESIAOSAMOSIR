@@ -4,10 +4,10 @@
         <attribute name="name" value="T01-Data type, Input-Output"/>
         <attribute name="authors" value="boyha"/>
         <attribute name="about" value=""/>
-        <attribute name="saved" value="2024-10-02 08:27:28 PM"/>
+        <attribute name="saved" value="2024-10-02 08:34:58 PM"/>
         <attribute name="created" value="Ym95aGE7Qk9ZOzIwMjQtMDktMDY7MTA6MTE6MjAgQU07MjAyMg=="/>
         <attribute name="edited" value="Ym95aGE7Qk9ZOzIwMjQtMDktMDY7MTE6MjQ6MTAgQU07NTsyMTM4"/>
-        <attribute name="edited" value="QVNVUztTVU5OWS1MQVBUT1A7MjAyNC0xMC0wMjswODoyNzoyOCBQTTsyMTsyNjc4"/>
+        <attribute name="edited" value="QVNVUztTVU5OWS1MQVBUT1A7MjAyNC0xMC0wMjswODozNDo1OCBQTTsyMjsyNjgw"/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -58,7 +58,7 @@
                                 </if>
                             </else>
                         </if>
-                        <assign variable="Katdiskon" expression="(margin/(-hargabeli))"/>
+                        <assign variable="Katdiskon" expression="margin/hargabeli"/>
                         <if expression="Katdiskon&gt;=0.4">
                             <then>
                                 <assign variable="Diskon" expression="&quot;Once in a lifetime&quot;"/>
