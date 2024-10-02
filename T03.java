@@ -8,63 +8,68 @@ public class T03 {
     private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String isbn, judul, penulis, penerbit, formatbuku, kat, tub, diskon;
-        int stok, tahunterbit;
-        double margin, rating, hargabeli, katdiskon;
+        String iSBN, tahunterbit, judul, penulis, penerbit, format, kategoridiskon, kategoribuku, kategori;
+        double minimummargin, rating, harga, diskon;
+        int stok;
 
+        kategori = "";
         do {
-            isbn = input.nextLine();
-            if (isbn.equals("---")) {
+            iSBN = input.nextLine();
+            if (iSBN.equals("---")) {
             } else {
                 judul = input.nextLine();
                 penulis = input.nextLine();
-                tahunterbit = Integer.parseInt(input.nextLine());
+                tahunterbit = input.nextLine();
                 penerbit = input.nextLine();
-                formatbuku = input.nextLine();
-                hargabeli = Double.parseDouble(input.nextLine());
-                margin = Double.parseDouble(input.nextLine());
+                if (penerbit.equals("---")) {
+                    penerbit = "---";
+                } else {
+                    penerbit = penerbit;
+                }
+                format = input.nextLine();
+                harga = Double.parseDouble(input.nextLine());
+                minimummargin = Double.parseDouble(input.nextLine());
+                if (minimummargin > 0) {
+                    kategoridiskon = "---";
+                } else {
+                    if (minimummargin < -(harga * 0.4)) {
+                        kategoridiskon = "Once in a lifetime";
+                    } else {
+                        if (minimummargin < -(harga * 0.2)) {
+                            kategoridiskon = "Never come twice";
+                        } else {
+                            kategoridiskon = "No regret";
+                        }
+                    }
+                }
                 stok = Integer.parseInt(input.nextLine());
                 rating = Double.parseDouble(input.nextLine());
-                if (rating >= 4.7) {
-                    kat = "Best Pick";
+                if (rating < 3.0) {
+                    kategori = "Low";
                 } else {
-                    if (rating >= 4.5) {
-                        kat = "Must Read";
+                    if (rating >= 3.0 && rating < 4.0) {
+                        kategori = "Average";
                     } else {
-                        if (rating >= 4.0) {
-                            kat = "Recommended";
+                        if (rating >= 4.0 && rating < 4.5) {
+                            kategori = "Recommended";
                         } else {
-                            if (rating >= 3.0) {
-                                kat = "Average";
+                            if (rating >= 4.5 && rating < 4.7) {
+                                kategori = "Must Read";
                             } else {
-                                kat = "Low";
+                                if (rating >= 4.7) {
+                                    kategori = "Best Pick";
+                                }
                             }
                         }
                     }
                 }
-                katdiskon = margin / hargabeli;
-                if (katdiskon >= 0.4) {
-                    diskon = "Once in a lifetime";
+                if (kategoridiskon.equals("Once in a lifetime") && kategori.equals("Best Pick")) {
+                    kategoribuku = "The ultimate best";
                 } else {
-                    if (katdiskon >= 0.2) {
-                        diskon = "Never come twice";
-                    } else {
-                        if (katdiskon > 0) {
-                            diskon = "No regret";
-                        }
-                    }
+                    kategoribuku = "---";
                 }
-                if (kat.equals("Best pick ") && diskon.equals("once in lifetime")) {
-                    tub = "The ultimate best";
-                } else {
-                    tub = "---";
-                }
-                System.out.println(isbn + "|" + judul + "|" + penulis + "|" + tahunterbit + "|" + penerbit + "|" + formatbuku + "|" + toFixed(hargabeli,2) + "|" + toFixed(margin,2) + "|" + stok + "|" + rating + "|" + kat + "|" + diskon + "|" + tub);
+                System.out.println(iSBN + "|" + judul + "|" + penulis + "|" + tahunterbit + "|" + penerbit + "|" + format + "|" + harga + "|" + minimummargin + "|" + stok + "|" + rating + "|" + kategori + "|" + kategoridiskon + "|" + kategoribuku);
             }
-        } while (!isbn.equals("---"));
-    }
-    
-    private static String toFixed(double value, int digits) {
-        return String.format("%." + digits + "f", value);
+        } while (!iSBN.equals("---"));
     }
 }
