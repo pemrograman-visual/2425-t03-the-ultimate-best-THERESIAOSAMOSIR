@@ -1,5 +1,6 @@
 // 12S24055 Theresia Oktaviani Samosir
 // 12S24016 Boy Harendy Simamora
+
 import java.util.*;
 import java.lang.Math;
 
@@ -7,67 +8,63 @@ public class T03 {
     private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String iSBN, kET, kET2, kET3;
-        String jUDUL;
-        String pENULIS;
-        int tAHUNTERBIT;
-        String pENERBIT;
-        String fORMATBUKU;
-        double hARGABELI;
-        double mINIMUMMARGIN;
-        int sTOK;
-        double rATING;
-        double dISKON;
+        String isbn, judul, penulis, penerbit, formatbuku, kat, tub, diskon;
+        int stok, tahunterbit;
+        double margin, rating, hargabeli, katdiskon;
 
         do {
-            iSBN = input.nextLine();
-            if (iSBN.equals("---")) {
+            isbn = input.nextLine();
+            if (isbn.equals("---")) {
             } else {
-                jUDUL = input.nextLine();
-                pENULIS = input.nextLine();
-                tAHUNTERBIT = Integer.parseInt(input.nextLine());
-                pENERBIT = input.nextLine();
-                fORMATBUKU = input.nextLine();
-                hARGABELI = Double.parseDouble(input.nextLine());
-                mINIMUMMARGIN = Double.parseDouble(input.nextLine());
-                sTOK = Integer.parseInt(input.nextLine());
-                rATING = Double.parseDouble(input.nextLine());
-                if (rATING >= 4.7) {
-                    kET = "Best pick";
+                judul = input.nextLine();
+                penulis = input.nextLine();
+                tahunterbit = Integer.parseInt(input.nextLine());
+                penerbit = input.nextLine();
+                formatbuku = input.nextLine();
+                hargabeli = Double.parseDouble(input.nextLine());
+                margin = Double.parseDouble(input.nextLine());
+                stok = Integer.parseInt(input.nextLine());
+                rating = Double.parseDouble(input.nextLine());
+                if (rating >= 4.7) {
+                    kat = "Best Pick";
                 } else {
-                    if (rATING >= 4.5) {
-                        kET = "Must Pick";
+                    if (rating >= 4.5) {
+                        kat = "Must Read";
                     } else {
-                        if (rATING >= 4.0) {
-                            kET = "Recommended";
+                        if (rating >= 4.0) {
+                            kat = "Recommended";
                         } else {
-                            if (rATING >= 3.0) {
-                                kET = "Average";
+                            if (rating >= 3.0) {
+                                kat = "Average";
                             } else {
-                                kET = "Low";
+                                kat = "Low";
                             }
                         }
                     }
                 }
-                dISKON = mINIMUMMARGIN / hARGABELI * -1;
-                if (dISKON >= (double) 40 / 100) {
-                    kET2 = "Once in a livetime";
+                katdiskon = margin / hargabeli * -1;
+                if (katdiskon >= 0.4) {
+                    diskon = "Once in a lifetime";
                 } else {
-                    if (dISKON >= (double) 20 / 100) {
-                        kET2 = "Never come twice";
+                    if (katdiskon >= 0.2) {
+                        diskon = "Never come twice";
                     } else {
-                        if (dISKON > 0) {
-                            kET2 = "No regret";
+                        if (katdiskon > 0) {
+                            diskon = "No regret";
                         }
                     }
                 }
-                if (rATING >= 4.7 && dISKON >= (double) 40 / 100) {
-                    kET3 = "The ultimate best";
+                if (kat.equals("Best pick ") && diskon.equals("once in lifetime")) {
+                    tub = "The ultimate best";
                 } else {
-                    kET3 = "---";
+                    tub = "---";
                 }
-                System.out.println(iSBN + "|" + jUDUL + "|" + pENULIS + "|" + tAHUNTERBIT + "|" + pENERBIT + "|" + fORMATBUKU + "|" + hARGABELI + "|" + mINIMUMMARGIN + "|" + sTOK + "|" + rATING + "|" + kET + "|" + kET2 + "|" + kET3);
+                System.out.println(isbn + "|" + judul + "|" + penulis + "|" + tahunterbit + "|" + penerbit + "|" + formatbuku + "|" + toFixed(hargabeli,2) + "|" + toFixed(margin,2) + "|" + stok + "|" + rating + "|" + kat + "|" + diskon + "|" + tub);
             }
-        } while (!iSBN.equals("---"));
+        } while (!isbn.equals("---"));
+    }
+    
+    private static String toFixed(double value, int digits) {
+        return String.format("%." + digits + "f", value);
     }
 }
